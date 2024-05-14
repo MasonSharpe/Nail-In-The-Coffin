@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Vector2 mouseVelocity;
     public bool isConnected = true;
     public Rigidbody2D rb;
     public Rigidbody2D cameraRb;
@@ -32,10 +31,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
 
-    }
 
     private void Update()
     {
@@ -65,6 +61,11 @@ public class PlayerMovement : MonoBehaviour
         float camY = yDist > 0.5f ? normalized.y * (yDist * 10 - 5f) : 0;
         cameraRb.velocity = new(camX, camY);
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 
 
@@ -80,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (invincTimer < 0)
         {
-            StartCoroutine(Camera.main.gameObject.GetComponent<CameraShake>().Shake(0.2f, 0.2f));
             health -= amount;
             invincTimer = 0.25f;
             if (health <= 0)

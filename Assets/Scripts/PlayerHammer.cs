@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHammer : MonoBehaviour
 {
+    public CameraShake shaker;
 
     public Transform hammer;
     public Transform hammerEnd;
@@ -14,6 +15,7 @@ public class PlayerHammer : MonoBehaviour
     public float timeStopTimer = -1;
     public float state = 0;
     public float energy;
+    public float hammerVisibility;
     public bool slamming;
     public bool canSwitch = true;
 
@@ -63,5 +65,10 @@ public class PlayerHammer : MonoBehaviour
         float strength = slamming ? 1 : 0.4f;
         hammer.GetComponent<SpriteRenderer>().color = new Color(0.2f, 0, 0, strength);
         hammerEnd.GetComponent<SpriteRenderer>().color = new Color(0.2f, 0, 0, strength);
+        if (state == 2)
+        {
+            shaker.Shake(Time.deltaTime, 0.02f);
+        }
+
     }
 }
