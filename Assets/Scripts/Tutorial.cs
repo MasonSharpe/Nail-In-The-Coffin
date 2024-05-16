@@ -12,6 +12,7 @@ public class Tutorial : MonoBehaviour
     public float timer;
     public bool canClick;
 
+    public GameObject nextButton;
     public Transform enemies;
     public TextMeshProUGUI instructionsText;
     public NailPoint point;
@@ -74,7 +75,12 @@ public class Tutorial : MonoBehaviour
             case 7:
                 canClick = false;
                 break;
+            case 8:
+                spawner.spawning = false;
+                spawner2.spawning = false;
+                break;
         }
+        nextButton.SetActive(canClick);
 
     }
     public void ClearEnemies()

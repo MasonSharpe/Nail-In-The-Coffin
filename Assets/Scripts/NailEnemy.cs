@@ -109,7 +109,7 @@ public class NailEnemy : MonoBehaviour
             hitbox.enabled = false;
 
         }
-        if (Input.GetKey(KeyCode.Mouse0) && state == 2 && (player.hammer.hammerEnd.transform.position - transform.position).magnitude < 0.3f)
+        if (Input.GetKey(KeyCode.Mouse0) && state == 2 && (player.hammer.hammerEnd.transform.position - transform.position).magnitude < 0.4f)
         {
             if (player.hammer.canSwitch)
             {

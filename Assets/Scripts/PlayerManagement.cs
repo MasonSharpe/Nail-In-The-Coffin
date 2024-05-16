@@ -40,7 +40,7 @@ public class PlayerManagement : MonoBehaviour
         {
             if (collision.transform.parent.GetComponent<NailEnemy>().dashState == 2)
             {
-                if (!LevelManager.instance.tutorial) health--;
+                if (!(LevelManager.instance.tutorial && health > 3)) health--;
             }
         }
     }

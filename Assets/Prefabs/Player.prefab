@@ -1188,6 +1188,7 @@ MonoBehaviour:
   body: {fileID: 1703387811339352184}
   cameraMover: {fileID: 0}
   health: 20
+  movementSpeed: 2.5
 --- !u!114 &8584062238436062309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,7 +1209,6 @@ MonoBehaviour:
   trail: {fileID: 6738187595638388064}
   trailCollider: {fileID: 2398974888059263087}
   shadow: {fileID: 615688551265767501}
-  length: 2
   rotationDir: 1
   timeStopTimer: 0
   shadowTimer: -3
@@ -1217,11 +1217,13 @@ MonoBehaviour:
   hammerVisibility: 0
   slamming: 0
   canSwitch: 1
+  stuck: 0
+  length: 2
   energyRegen: 1.5
   energyMax: 5
   rotationSpeed: 2
   stuckSlowdown: 0.5
-  stuck: 0
+  shadowRecoveryTime: 1
 --- !u!50 &6019008030350497294
 Rigidbody2D:
   serializedVersion: 4

@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
                 Destroy(enemy.gameObject);
             }
 
-            if (dist > 1.5f) continue;
+            if (dist > 1.5f || !point.enabled) continue;
 
             if (tutorial && Tutorial.instance.phase == 6) Tutorial.instance.NextPhase();
             point.counted = true;
