@@ -69,26 +69,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Damaging")
-        {
-            takeDamage(4);
-        }
-    }
 
-    void takeDamage(float amount)
-    {
-        if (invincTimer < 0)
-        {
-            health -= amount;
-            invincTimer = 0.25f;
-            if (health <= 0)
-            {
-
-            }
-        }
-    }
 
 
 }

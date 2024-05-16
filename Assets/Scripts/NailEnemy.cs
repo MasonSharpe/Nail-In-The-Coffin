@@ -8,7 +8,9 @@ public class NailEnemy : MonoBehaviour
     public Collider2D hitbox;
     public CameraShake shaker;
     public Rigidbody2D rb;
+    public SpriteRenderer dashVisual;
     public int state = 0;
+    public float timeSpinning;
 
     public int dashState = 0;
     public float dashTimer;
@@ -23,6 +25,7 @@ public class NailEnemy : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerManagement>();
+        shaker = Camera.main.GetComponent<CameraShake>();
     }
 
     private void Update()
@@ -41,6 +44,9 @@ public class NailEnemy : MonoBehaviour
                         dashState = 1;
                         dashTimer = dashWindupTime;
                         dashDirection = (player.transform.position - transform.position).normalized;
+                        dashVisual.enabled = true;
+                        float angle = Mathf.Atan2(dashDirection.y, dashDirection.x) * Mathf.Rad2Deg;
+                        dashVisual.transform.parent.localRotation = Quaternion.Euler(0, 0, angle);
                     }
                     break;
 
@@ -61,6 +67,7 @@ public class NailEnemy : MonoBehaviour
                         dashState = 3;
                         dashTimer = dashEndlag;
                     }
+                    dashVisual.enabled = false;
                     break;
                 case 3:
                     rb.velocity = Vector2.zero;
@@ -74,6 +81,8 @@ public class NailEnemy : MonoBehaviour
         else if (state == 1)
         {
             transform.position = player.hammer.hammerEnd.transform.position;
+            timeSpinning += Time.deltaTime;
+            if (timeSpinning > 1 && LevelManager.instance.tutorial && Tutorial.instance.phase == 5) Tutorial.instance.NextPhase();
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && player.hammer.energy >= 1)
@@ -82,22 +91,23 @@ public class NailEnemy : MonoBehaviour
             {
                 shaker.Shake(0.07f, 0.05f);
                 state = 1;
-                hitbox.enabled = false;
                 player.hammer.timeStopTimer = 0.1f;
                 player.hammer.state = 1;
                 Time.timeScale = 0;
                 rb.velocity = Vector2.zero;
+                dashVisual.enabled = false;
+                timeSpinning = 0;
             }
         }
         if (Input.GetKeyUp(KeyCode.Mouse0) && state == 1)
         {
             state = 2;
+            rb.velocity = Vector2.zero;
 
             LevelManager.instance.PlaceNail(this);
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            state = 0;
+
+            hitbox.enabled = false;
+
         }
         if (Input.GetKey(KeyCode.Mouse0) && state == 2 && (player.hammer.hammerEnd.transform.position - transform.position).magnitude < 0.3f)
         {
