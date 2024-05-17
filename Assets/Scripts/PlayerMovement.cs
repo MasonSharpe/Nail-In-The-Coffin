@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform body;
     public GameObject cameraMover;
     public float health = 20;
+    public float movementSpeed = 3;
     float invincTimer = 0;
 
 
@@ -44,9 +45,9 @@ public class PlayerMovement : MonoBehaviour
         Vector2 normalized = velocity.normalized;
         if (velocity.magnitude > 5) velocity = normalized * 5;
 
-        if (velocity.magnitude > 0.15f)
+        if (velocity.magnitude > 0.5f)
         {
-            rb.velocity = 3f * hammer.stuck * velocity;
+            rb.velocity = movementSpeed * hammer.stuck * velocity;
 
             float angle = Mathf.Atan2(normalized.y, normalized.x) * Mathf.Rad2Deg;
             body.transform.localRotation = Quaternion.Euler(0, 0, angle);
@@ -69,26 +70,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Damaging")
-        {
-            takeDamage(4);
-        }
-    }
 
-    void takeDamage(float amount)
-    {
-        if (invincTimer < 0)
-        {
-            health -= amount;
-            invincTimer = 0.25f;
-            if (health <= 0)
-            {
-
-            }
-        }
-    }
 
 
 }
