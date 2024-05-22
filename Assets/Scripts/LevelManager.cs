@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Time.timeScale = 1;
     }
     public void PlaceNail(NailEnemy enemy)
     {
@@ -51,10 +52,11 @@ public class LevelManager : MonoBehaviour
             point.counted = true;
             point.score = dist;
             point.sprite.enabled = false;
-            PlayerManagement.instance.health = Mathf.Clamp(PlayerManagement.instance.health + 0.5f, 0, PlayerManagement.instance.maxHealth);
+            PlayerManagement.instance.health = Mathf.Clamp(PlayerManagement.instance.health + PlayerManagement.instance.healthRegenAmount, 0, PlayerManagement.instance.maxHealth);
 
             if (points.Count(element => element.counted) == points.Count)
             {
+                //Time.timeScale = 0;
                 //winScreen.enabled = true;
             }
         }

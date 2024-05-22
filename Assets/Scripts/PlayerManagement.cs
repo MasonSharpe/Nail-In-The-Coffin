@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class PlayerManagement : MonoBehaviour
 {
     public static PlayerManagement instance;
@@ -10,12 +12,12 @@ public class PlayerManagement : MonoBehaviour
     public PlayerMovement movement;
     public LayerMask boardMask;
 
-
     public Image healthCircle;
     public Image energyCircle;
 
     public float health;
     public float maxHealth;
+    public float healthRegenAmount;
 
     private void Awake()
     {
