@@ -2111,9 +2111,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1534752709427214204, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1534752709427214204, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2848460155133778017, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2848460155133778017, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293624330057939749, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293624330057939749, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436624019882742703, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436624019882742703, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143350678529606391, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158668087974248760, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158668087974248760, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422998062718056381, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422998062718056381, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552041752344334393, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552041752344334393, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946380509828424835, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8467064930739003229, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
       propertyPath: m_Name
       value: WinScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8802164710074255165, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8802164710074255165, guid: 4a0457f5e7fd6994dac81e78f3f023fc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
