@@ -15,9 +15,12 @@ public class Warble : MonoBehaviour
 
     private void Update()
     {
-        Vector3 pos = Input.mousePosition;
-        pos.z = -Camera.main.transform.position.z;
-        pos -= new Vector3(Screen.width / 2, Screen.height / 2, 0);
-        UIParent.position = startingPanelPos + (pos / 60);
+        if (!LevelManager.instance.winScreen.enabled)
+        {
+            Vector3 pos = Input.mousePosition;
+            pos.z = -Camera.main.transform.position.z;
+            pos -= new Vector3(Screen.width / 2, Screen.height / 2, 0);
+            UIParent.position = startingPanelPos + (pos / 60);
+        }
     }
 }

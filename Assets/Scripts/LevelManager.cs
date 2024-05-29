@@ -7,30 +7,52 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
+    public int level;
     public List<NailPoint> points;
     public int spawnCap;
     public int enemiesSpawnedIn;
     public bool tutorial;
 
+    public float totalKilled;
+
     public Canvas winScreen;
 
-    public float precisionScoreChallenge;
     public float timeScoreChallenge;
     public float cleanlinessScoreChallenge;
 
-    public float precisionScore;
-    public float timeScore;
+    public float timeScore; // starts at 0, goes up every second
     public float cleanlinessScore;
 
 
     private void Awake()
     {
         instance = this;
+        timeScore = 0;
+        cleanlinessScore = 1;
         Time.timeScale = 1;
+        totalKilled = 0;
+        GameManager.instance.currentLevel = level;
+    }
+    private void Update()
+    {
+        timeScore += Time.deltaTime;
+    }
+    public float CalculateEarnings()
+    {
+        float earnings = cleanlinessScore / 100;
+        earnings += Mathf.Clamp((2 * timeScoreChallenge - timeScore) / timeScoreChallenge, 0.5f, 1);
+        earnings *= GameManager.instance.currentLevel * 12;
+
+        if (timeScore < timeScoreChallenge) earnings *= 2;
+        if (cleanlinessScore > cleanlinessScoreChallenge) earnings *= 2;
+
+        return earnings;
     }
     public void PlaceNail(NailEnemy enemy)
     {
+        totalKilled++;
         enemiesSpawnedIn--;
+        float totalInPlace = points.Count(element => element.counted);
 
         if (tutorial && Tutorial.instance.phase == 3) Tutorial.instance.NextPhase();
 
@@ -45,6 +67,10 @@ public class LevelManager : MonoBehaviour
                 if (tutorial && Tutorial.instance.phase == 7) Tutorial.instance.NextPhase();
                 Destroy(enemy.gameObject);
             }
+            else
+            {
+                cleanlinessScore = Mathf.Clamp(totalInPlace / totalKilled, 0.5f, 1) * 100;
+            }
 
             if (dist > 1.5f || !point.enabled) continue;
 
@@ -54,11 +80,17 @@ public class LevelManager : MonoBehaviour
             point.sprite.enabled = false;
             PlayerManagement.instance.health = Mathf.Clamp(PlayerManagement.instance.health + PlayerManagement.instance.healthRegenAmount, 0, PlayerManagement.instance.maxHealth);
 
-            if (points.Count(element => element.counted) == points.Count)
+            if (totalInPlace == points.Count)
             {
-                //Time.timeScale = 0;
-                //winScreen.enabled = true;
+                ShowWinScreen();
             }
         }
+    }
+
+    public void ShowWinScreen()
+    {
+        Time.timeScale = 0;
+        winScreen.enabled = true;
+        winScreen.GetComponent<UpgradeScreen>().Initiate();
     }
 }

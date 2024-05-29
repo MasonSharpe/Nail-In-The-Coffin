@@ -26,6 +26,9 @@ public class PlayerManagement : MonoBehaviour
 
     private void Start()
     {
+        maxHealth = GameManager.instance.upgrades[1].currentPurchases * 2.5f + 2.5f;
+        healthRegenAmount = GameManager.instance.upgrades[0].currentPurchases * 0.5f + 1;
+
         health = maxHealth;
     }
     private void Update()
