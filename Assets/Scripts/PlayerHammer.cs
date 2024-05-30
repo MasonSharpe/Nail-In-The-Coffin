@@ -22,16 +22,22 @@ public class PlayerHammer : MonoBehaviour
     public bool slamming;
     public bool canSwitch = true;
     public float stuck;
+    public float stuckSlowdown;
+
 
     public float length;
     public float energyRegen;
     public float energyMax;
     public float rotationSpeed;
-    public float stuckSlowdown;
     public float shadowRecoveryTime;
 
     void Start()
     {
+        length = GameManager.instance.upgrades[6].currentPurchases + 1;
+        energyRegen = GameManager.instance.upgrades[2].currentPurchases * 0.5f + 1;
+        energyMax = GameManager.instance.upgrades[3].currentPurchases * 1.5f + 3.5f;
+        rotationSpeed = GameManager.instance.upgrades[4].currentPurchases * 0.5f + 1.5f;
+        shadowRecoveryTime = GameManager.instance.upgrades[7].currentPurchases * 0.5f + 1;
 
         hammerEnd.GetComponent<TrailRenderer>().emitting = false;
         rotationDir = 1;
@@ -39,11 +45,13 @@ public class PlayerHammer : MonoBehaviour
         stuck = 1;
         energy = energyMax;
         shadowTimer = 2;
+
     }
     
 
     private void Update()
     {
+        if (LevelManager.instance.winScreen.enabled) return;
         if (!slamming)
         {
             energy = Mathf.Clamp(energy + Time.deltaTime * energyRegen, 0, energyMax);
@@ -59,7 +67,7 @@ public class PlayerHammer : MonoBehaviour
 
         timeStopTimer -= Time.unscaledDeltaTime;
         shadow.color = new Color(0, 0, 0, Mathf.Clamp((1 - Mathf.Clamp01(shadowTimer)) / 4f, 0f, 0.25f));
-        Time.timeScale = timeStopTimer > 0 ? 0 : 1;
+        Time.timeScale = timeStopTimer > 0 || LevelManager.instance.winScreen.enabled ? 0 : 1;
         Vector3 rotation = rotationSpeed * stuck * Time.deltaTime * 180 * rotationDir * Vector3.forward;
         if (!canSwitch) rotation *= 3;
         rotationPoint.Rotate(rotation);

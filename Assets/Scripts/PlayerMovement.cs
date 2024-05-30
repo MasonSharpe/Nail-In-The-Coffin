@@ -8,26 +8,17 @@ public class PlayerMovement : MonoBehaviour
 {
     public bool isConnected = true;
     public Rigidbody2D rb;
-    public Rigidbody2D cameraRb;
     public TrailRenderer tr;
     public PlayerHammer hammer;
     public Transform body;
-    public GameObject cameraMover;
-    public float health = 20;
     public float movementSpeed = 3;
     float invincTimer = 0;
 
 
-    private void Awake()
-    {
-
-    }
 
     void Start()
     {
-
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        movementSpeed = GameManager.instance.upgrades[5].currentPurchases * 5 + 5;
 
     }
 
@@ -36,19 +27,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (LevelManager.instance.winScreen.enabled) return;
+
         Vector3 pos = Input.mousePosition;
         pos = Camera.main.ScreenToWorldPoint(pos);
         pos.z = 0;
         invincTimer -= Time.deltaTime;
 
-        Vector2 velocity = ((Vector2)new Vector3(pos.x, pos.y, 0) - (Vector2)transform.position) * 1.3f;
+        Vector2 velocity = (Vector2)new Vector3(pos.x, pos.y, 0) - (Vector2)transform.position;
         Vector2 normalized = velocity.normalized;
-        if (velocity.magnitude > 5) velocity = normalized * 5;
-
+        if (velocity.magnitude > movementSpeed) velocity = normalized * movementSpeed;
+        velocity *= hammer.stuck;
         if (velocity.magnitude > 0.5f)
         {
-            rb.velocity = movementSpeed * hammer.stuck * velocity;
-
+            rb.velocity = velocity;
             float angle = Mathf.Atan2(normalized.y, normalized.x) * Mathf.Rad2Deg;
             body.transform.localRotation = Quaternion.Euler(0, 0, angle);
         }
@@ -56,11 +48,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
-        float xDist = Mathf.Clamp01(Mathf.Abs(Input.mousePosition.x - Screen.width / 2f) / (Screen.width / 2));
-        float yDist = Mathf.Clamp01(Mathf.Abs(Input.mousePosition.y - Screen.height / 2f) / (Screen.height / 2f));
-        float camX = xDist > 0.5f ? normalized.x * (xDist * 10 - 5f) : 0;
-        float camY = yDist > 0.5f ? normalized.y * (yDist * 10 - 5f) : 0;
-        cameraRb.velocity = new(camX, camY);
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

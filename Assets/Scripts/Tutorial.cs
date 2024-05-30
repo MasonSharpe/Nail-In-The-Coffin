@@ -45,7 +45,7 @@ public class Tutorial : MonoBehaviour
     {
         phase++;
 
-        instructionsText.text = instructions[phase];
+        if (phase < instructions.Count) instructionsText.text = instructions[phase];
         canClick = true;
 
         switch (phase)
@@ -78,6 +78,10 @@ public class Tutorial : MonoBehaviour
             case 8:
                 spawner.spawning = false;
                 spawner2.spawning = false;
+                break;
+            case 12:
+                instructionsText.transform.parent.gameObject.SetActive(false);
+                LevelManager.instance.ShowWinScreen();
                 break;
         }
         nextButton.SetActive(canClick);

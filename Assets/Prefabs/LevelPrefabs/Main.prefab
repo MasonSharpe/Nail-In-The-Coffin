@@ -44,13 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47174f6a2e2939240aa75f47c5a260e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points:
-  - {fileID: 0}
-  - {fileID: 0}
+  level: 0
+  points: []
+  spawnCap: 15
+  enemiesSpawnedIn: 0
+  tutorial: 0
+  totalKilled: 0
   winScreen: {fileID: 0}
-  precisionScoreChallenge: 0
-  timeScoreChallenge: 0
-  cleanlinessScoreChallenge: 0
-  precisionScore: 0
+  timeScoreChallenge: 120
+  cleanlinessScoreChallenge: 80
   timeScore: 0
   cleanlinessScore: 0

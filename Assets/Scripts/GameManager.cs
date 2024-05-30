@@ -18,11 +18,21 @@ public class GameManager : MonoBehaviour
 
     public float CalculateUpgradeCost(Upgrade upgrade)
     {
-        return upgrade.initialCost + (upgrade.additiveCost * (upgrade.currentPurchases - 1)) * (upgrade.mulplicativeCost * (upgrade.currentPurchases - 1));
+        float value;
+        if (upgrade.currentPurchases < 2)
+        {
+            value = upgrade.initialCost;
+        }
+        else
+        {
+            value = (upgrade.initialCost + upgrade.additiveCost * (upgrade.currentPurchases - 1)) * (upgrade.mulplicativeCost * (upgrade.currentPurchases - 1));
+        }
+        return Mathf.Round(value);
     }
 }
 
 
+[System.Serializable]
 public class Upgrade
 {
     public UpgradeName name;

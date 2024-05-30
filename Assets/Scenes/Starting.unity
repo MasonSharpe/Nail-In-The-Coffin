@@ -152,6 +152,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628927d4b7564264b806f60e9129adb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgrades:
+  - name: 0
+    maxPurchases: 5
+    currentPurchases: 1
+    initialCost: 10
+    additiveCost: 10
+    mulplicativeCost: 1
+  - name: 1
+    maxPurchases: 3
+    currentPurchases: 1
+    initialCost: 25
+    additiveCost: 5
+    mulplicativeCost: 1.5
+  - name: 2
+    maxPurchases: 5
+    currentPurchases: 1
+    initialCost: 10
+    additiveCost: 8
+    mulplicativeCost: 1
+  - name: 3
+    maxPurchases: 3
+    currentPurchases: 1
+    initialCost: 25
+    additiveCost: 4
+    mulplicativeCost: 1.5
+  - name: 4
+    maxPurchases: 3
+    currentPurchases: 1
+    initialCost: 12
+    additiveCost: 3
+    mulplicativeCost: 1
+  - name: 5
+    maxPurchases: 5
+    currentPurchases: 1
+    initialCost: 8
+    additiveCost: 4
+    mulplicativeCost: 1.1
+  - name: 6
+    maxPurchases: 3
+    currentPurchases: 1
+    initialCost: 15
+    additiveCost: 6
+    mulplicativeCost: 1.25
+  - name: 7
+    maxPurchases: 2
+    currentPurchases: 1
+    initialCost: 10
+    additiveCost: 20
+    mulplicativeCost: 1
   money: 0
   currentLevel: 0
   levelNames:
@@ -184,6 +233,7 @@ GameObject:
   - component: {fileID: 1968660307}
   - component: {fileID: 1968660306}
   - component: {fileID: 1968660309}
+  - component: {fileID: 1968660310}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -309,6 +359,18 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &1968660310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968660305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180bab71c2634ea45a404d2ef4667983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
