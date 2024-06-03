@@ -10,6 +10,6 @@ public class Starting : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 1) SceneManager.LoadScene("Level1");
+        if (timer > 1) SceneManager.LoadScene("Tutorial");
     }
 }
