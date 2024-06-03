@@ -24,7 +24,7 @@ public class UpgradeScreen : MonoBehaviour
     public void Initiate()
     {
         Time.timeScale = 0;
-        timeText.text = LevelManager.instance.timeScore + " sec";
+        timeText.text = Mathf.Round(LevelManager.instance.timeScore) + " sec";
         cleanText.text = LevelManager.instance.cleanlinessScore + "%";
 
         float earnings = LevelManager.instance.CalculateEarnings();

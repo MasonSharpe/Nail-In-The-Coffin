@@ -9,7 +9,7 @@ public class NailEnemy : MonoBehaviour
     public CameraShake shaker;
     public Rigidbody2D rb;
     public SpriteRenderer dashVisual;
-    public int state = 0;
+    public int state;
     public float timeSpinning;
 
     public int dashState = 0;
@@ -119,6 +119,11 @@ public class NailEnemy : MonoBehaviour
         }
         else {
             player.hammer.canSwitch = true;
+        }
+        if ((player.transform.position - transform.position).magnitude > 20)
+        {
+            LevelManager.instance.enemiesSpawnedIn--;
+            Destroy(gameObject);
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 
 public class PlayerManagement : MonoBehaviour
@@ -43,9 +43,17 @@ public class PlayerManagement : MonoBehaviour
     {
         if (collision.gameObject.name == "DamageHitbox")
         {
-            if (collision.transform.parent.GetComponent<NailEnemy>().dashState == 2)
+            NailEnemy enemy = collision.transform.parent.GetComponent<NailEnemy>();
+            if (enemy.dashState == 2 && enemy.state != 2)
             {
-                if (!(LevelManager.instance.tutorial && health > 3)) health--;
+                if (!(LevelManager.instance.tutorial && health > 3))
+                {
+                    health--;
+                    if (health <= 0)
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    }
+                }
             }
         }
     }

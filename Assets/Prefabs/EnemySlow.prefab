@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 4279699889642464805}
   - component: {fileID: 6138949843445863449}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemySlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,8 +95,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 718428849176143105}
   - {fileID: 6319170133598959391}
@@ -122,10 +122,11 @@ MonoBehaviour:
   rb: {fileID: 6138949843445863449}
   dashVisual: {fileID: 7308010144709914495}
   state: 0
-  dashState: 0
+  timeSpinning: 0
+  dashState: -1
   dashTimer: 0
   dashDirection: {x: 0, y: 0}
-  speed: 4
+  speed: 1
   dashSpeed: 15
   dashTime: 0.4
   dashWindupTime: 0.5
@@ -415,7 +416,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 50d05bb6e2cf0d1468e17529560edda9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.5, y: 1.5}

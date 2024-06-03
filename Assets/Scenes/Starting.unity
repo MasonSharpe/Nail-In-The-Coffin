@@ -205,7 +205,7 @@ MonoBehaviour:
   currentLevel: 0
   levelNames:
   - Tutorial
-  - LevelTemplate
+  - Level1
 --- !u!4 &512480428
 Transform:
   m_ObjectHideFlags: 0

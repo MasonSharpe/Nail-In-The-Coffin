@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
     {
         totalKilled++;
         enemiesSpawnedIn--;
-        float totalInPlace = points.Count(element => element.counted);
+
 
         if (tutorial && Tutorial.instance.phase == 3) Tutorial.instance.NextPhase();
 
@@ -69,10 +69,10 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                cleanlinessScore = Mathf.Clamp(totalInPlace / totalKilled, 0.5f, 1) * 100;
+                cleanlinessScore = Mathf.Clamp(points.Count(element => element.counted) / totalKilled, 0.5f, 1) * 100;
             }
 
-            if (dist > 1.5f || !point.enabled) continue;
+            if (dist > 1f || !point.enabled) continue;
 
             if (tutorial && Tutorial.instance.phase == 6) Tutorial.instance.NextPhase();
             point.counted = true;
@@ -80,6 +80,7 @@ public class LevelManager : MonoBehaviour
             point.sprite.enabled = false;
             PlayerManagement.instance.health = Mathf.Clamp(PlayerManagement.instance.health + PlayerManagement.instance.healthRegenAmount, 0, PlayerManagement.instance.maxHealth);
 
+            float totalInPlace = points.Count(element => element.counted);
             if (totalInPlace == points.Count)
             {
                 ShowWinScreen();

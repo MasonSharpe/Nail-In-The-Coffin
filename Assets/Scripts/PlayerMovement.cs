@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        movementSpeed = GameManager.instance.upgrades[5].currentPurchases * 5 + 5;
+        movementSpeed = GameManager.instance.upgrades[5].currentPurchases * 2 + 3.5f;
 
     }
 

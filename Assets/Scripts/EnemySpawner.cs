@@ -17,7 +17,9 @@ public class EnemySpawner : MonoBehaviour
         if (timer < 0 && spawning)
         {
             timer = delay;
-            if (LevelManager.instance.enemiesSpawnedIn < LevelManager.instance.spawnCap && !GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(Camera.main), render.bounds))
+            bool notOnScreen = !GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(Camera.main), render.bounds);
+            bool close = Mathf.Abs((PlayerManagement.instance.transform.position - transform.position).magnitude) < 20;
+            if (LevelManager.instance.enemiesSpawnedIn < LevelManager.instance.spawnCap && notOnScreen && close)
             {
                 NailEnemy enemy = Instantiate(enemyType, parent);
                 enemy.transform.position = transform.position;
