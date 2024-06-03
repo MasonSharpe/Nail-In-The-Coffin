@@ -206,6 +206,9 @@ MonoBehaviour:
   levelNames:
   - Tutorial
   - Level1
+  - Level2
+  - Level3
+  - WinScreen
 --- !u!4 &512480428
 Transform:
   m_ObjectHideFlags: 0

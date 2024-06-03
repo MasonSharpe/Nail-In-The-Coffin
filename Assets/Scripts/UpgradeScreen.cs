@@ -67,7 +67,7 @@ public class UpgradeScreen : MonoBehaviour
         Upgrade upgrade = GameManager.instance.upgrades.Find(element => element.name == (UpgradeName)name);
         float cost = GameManager.instance.CalculateUpgradeCost(upgrade);
 
-        if (upgrade.currentPurchases == upgrade.maxPurchases || GameManager.instance.money < cost) return;
+        if (upgrade.currentPurchases == upgrade.maxPurchases + 1 || GameManager.instance.money < cost) return;
 
         upgrade.currentPurchases++;
         GameManager.instance.money -= cost;

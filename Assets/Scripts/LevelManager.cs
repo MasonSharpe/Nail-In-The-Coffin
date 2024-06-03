@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
         if (timeScore < timeScoreChallenge) earnings *= 2;
         if (cleanlinessScore > cleanlinessScoreChallenge) earnings *= 2;
 
-        return earnings;
+        return Mathf.Round(earnings);
     }
     public void PlaceNail(NailEnemy enemy)
     {

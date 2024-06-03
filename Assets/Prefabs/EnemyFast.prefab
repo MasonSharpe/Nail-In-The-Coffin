@@ -131,6 +131,7 @@ MonoBehaviour:
   dashTime: 0.25
   dashWindupTime: 0.3
   dashEndlag: 0.2
+  canDash: 1
 --- !u!50 &6138949843445863449
 Rigidbody2D:
   serializedVersion: 4

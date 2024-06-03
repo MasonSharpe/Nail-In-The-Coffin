@@ -21,6 +21,7 @@ public class NailEnemy : MonoBehaviour
     public float dashTime;
     public float dashWindupTime;
     public float dashEndlag;
+    public bool canDash;
 
     private void Start()
     {
@@ -39,7 +40,7 @@ public class NailEnemy : MonoBehaviour
                 case 0:
                     rb.velocity = (speed * (player.transform.position - transform.position).normalized);
 
-                    if ((player.transform.position - transform.position).magnitude < 2)
+                    if ((player.transform.position - transform.position).magnitude < 2 && canDash)
                     {
                         dashState = 1;
                         dashTimer = dashWindupTime;
@@ -120,7 +121,7 @@ public class NailEnemy : MonoBehaviour
         else {
             player.hammer.canSwitch = true;
         }
-        if ((player.transform.position - transform.position).magnitude > 20)
+        if ((player.transform.position - transform.position).magnitude > 20 && state != 2)
         {
             LevelManager.instance.enemiesSpawnedIn--;
             Destroy(gameObject);
