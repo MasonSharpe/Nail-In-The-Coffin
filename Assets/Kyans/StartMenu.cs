@@ -22,4 +22,8 @@ public class StartMenu : MonoBehaviour
         Application.Quit();
         
     }
+    public void LoadLevel(int index)
+    {
+        SceneManager.LoadScene(GameManager.instance.levelNames[index]);
+    }
 }

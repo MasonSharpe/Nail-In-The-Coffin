@@ -5354,7 +5354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5006997166701579890, guid: 29f266af4ab8f8d408ca45e2a80a3a47, type: 3}
       propertyPath: enableTopCollision
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5006997166701579890, guid: 29f266af4ab8f8d408ca45e2a80a3a47, type: 3}
       propertyPath: enableLeftCollision
@@ -5362,7 +5362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5006997166701579890, guid: 29f266af4ab8f8d408ca45e2a80a3a47, type: 3}
       propertyPath: enableBottomCollision
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9023038852851431488, guid: 29f266af4ab8f8d408ca45e2a80a3a47, type: 3}
       propertyPath: m_LocalPosition.x

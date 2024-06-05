@@ -44,11 +44,12 @@ public class PlayerManagement : MonoBehaviour
         if (collision.gameObject.name == "DamageHitbox")
         {
             NailEnemy enemy = collision.transform.parent.GetComponent<NailEnemy>();
-            if (enemy.dashState == 2 && enemy.state != 2)
+            if ((enemy.dashState == 2 || !enemy.canDash) && enemy.state != 2)
             {
                 if (!(LevelManager.instance.tutorial && health > 3))
                 {
                     health--;
+                    if (!enemy.canDash) health--;
                     if (health <= 0)
                     {
                         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

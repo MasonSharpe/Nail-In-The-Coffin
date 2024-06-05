@@ -9,6 +9,8 @@ public class NailEnemy : MonoBehaviour
     public CameraShake shaker;
     public Rigidbody2D rb;
     public SpriteRenderer dashVisual;
+    public SpriteRenderer sprite;
+    public Sprite deadSprite;
     public int state;
     public float timeSpinning;
 
@@ -98,12 +100,15 @@ public class NailEnemy : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 dashVisual.enabled = false;
                 timeSpinning = 0;
+                sprite.sprite = deadSprite;
+
             }
         }
         if (Input.GetKeyUp(KeyCode.Mouse0) && state == 1)
         {
             state = 2;
             rb.velocity = Vector2.zero;
+            sprite.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
 
             LevelManager.instance.PlaceNail(this);
 

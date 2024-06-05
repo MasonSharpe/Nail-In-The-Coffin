@@ -36,7 +36,7 @@ public class PlayerHammer : MonoBehaviour
         length = GameManager.instance.upgrades[6].currentPurchases + 1;
         energyRegen = GameManager.instance.upgrades[2].currentPurchases * 0.5f + 1;
         energyMax = GameManager.instance.upgrades[3].currentPurchases * 1.5f + 3.5f;
-        rotationSpeed = GameManager.instance.upgrades[4].currentPurchases * 0.5f + 1.5f;
+        rotationSpeed = GameManager.instance.upgrades[4].currentPurchases * 0.5f + 1f;
         shadowRecoveryTime = GameManager.instance.upgrades[7].currentPurchases * 0.5f + 1;
 
         hammerEnd.GetComponent<TrailRenderer>().emitting = false;
@@ -57,12 +57,12 @@ public class PlayerHammer : MonoBehaviour
             energy = Mathf.Clamp(energy + Time.deltaTime * energyRegen, 0, energyMax);
             shadowTimer -= Time.deltaTime * shadowRecoveryTime;
             hammer.localPosition = Vector3.zero;
-            hammer.localScale = new(0.57f, 0.57f, 0.57f);
+            hammer.localScale = new(0.1f, 0.1f, 0.1f);
         }
         else
         {
             float leg = lengthObject.localPosition.y;
-            hammer.localScale = new(0.57f, 0.5f + leg, 0.57f);
+            hammer.localScale = new(0.1f, 0.1f + leg / 10, 0.1f);
         }
 
         timeStopTimer -= Time.unscaledDeltaTime;
