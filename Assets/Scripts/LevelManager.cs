@@ -36,6 +36,11 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         timeScore += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ShowWinScreen();
+        }
     }
     public float CalculateEarnings()
     {
@@ -72,7 +77,7 @@ public class LevelManager : MonoBehaviour
                 cleanlinessScore = Mathf.Clamp(points.Count(element => element.counted) / totalKilled, 0.5f, 1) * 100;
             }
 
-            if (dist > 1f || !point.enabled) continue;
+            if (dist > 1f || !point.enabled || point.counted) continue;
 
             if (tutorial && Tutorial.instance.phase == 6) Tutorial.instance.NextPhase();
             point.counted = true;

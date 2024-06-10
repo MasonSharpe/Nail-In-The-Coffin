@@ -201,7 +201,7 @@ MonoBehaviour:
     initialCost: 10
     additiveCost: 20
     mulplicativeCost: 1
-  money: 0
+  money: 25
   currentLevel: 0
   levelNames:
   - Tutorial

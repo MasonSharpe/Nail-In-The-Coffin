@@ -9,7 +9,7 @@ public class WinScreen : MonoBehaviour
     public TextMeshProUGUI text;
     public void GoToTitle()
     {
-        SceneManager.LoadScene("Kyans Menu");
+        SceneManager.LoadScene("StartGameMenu Build");
     }
 
     private void Start()

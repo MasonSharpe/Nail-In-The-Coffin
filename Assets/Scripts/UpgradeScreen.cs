@@ -57,9 +57,11 @@ public class UpgradeScreen : MonoBehaviour
         else{
             costs[i].text = "$" + GameManager.instance.CalculateUpgradeCost(upgrade).ToString();
         }
-        upgradeBars[i].value = upgrade.currentPurchases;
+        print(upgrade.currentPurchases);
         upgradeBars[i].maxValue = upgrade.maxPurchases + 1;
 
+        upgradeBars[i].value = upgrade.currentPurchases;
+        
     }
 
     public void BuyUpgrade(int name)
